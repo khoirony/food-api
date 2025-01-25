@@ -2,17 +2,18 @@ package controllers
 
 import (
 	"net/http"
+	"rony/food-api/database"
 	"rony/food-api/helpers"
 	"rony/food-api/models"
-	"rony/food-api/database"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
 )
 
 type ValidateCategoryInput struct {
-	Name   		string `json:"name" binding:"required"`
-	Description	string `json:"description" binding:"required"`
+	Name        string `json:"name" binding:"required"`
+	Description string `json:"description" binding:"required"`
+	Image       string `json:"image" binding:"required"`
 }
 
 // get all category
@@ -60,8 +61,9 @@ func StoreCategory(c *gin.Context) {
 
 	//create post
 	category := models.Category{
-		Name:   input.Name,
+		Name:        input.Name,
 		Description: input.Description,
+		Image:       input.Image,
 	}
 	database.DB.Create(&category)
 
@@ -131,6 +133,7 @@ func UpdateCategoryById(c *gin.Context) {
 	// Update data category (menggunakan object category yang sudah ada)
 	category.Name = input.Name
 	category.Description = input.Description
+	category.Image = input.Image
 
 	// Simpan perubahan ke database
 	if err := database.DB.Save(&category).Error; err != nil {
