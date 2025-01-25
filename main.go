@@ -26,5 +26,5 @@ func main() {
 	routes.RegisterRoutes(router)
 
 	//mulai server dengan port 3000
-	router.Run(":3000")
+	router.Run("0.0.0.0:3000")
 }
