@@ -41,9 +41,4 @@ func RegisterRoutes(router *gin.Engine) {
 		orderRoutes.GET("", controllers.FindOrders)  // GET /api/category
 		orderRoutes.POST("", controllers.StoreOrder) // POST /api/category
 	}
-
-	ocrRoutes := router.Group("/api/ocr2")
-	{
-		ocrRoutes.POST("", controllers.OcrToText)
-	}
 }

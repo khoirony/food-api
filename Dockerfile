@@ -1,11 +1,7 @@
 FROM golang:1.23.4
 
 # Install dependencies
-RUN apt-get update && apt-get install -y \
-    tesseract-ocr \
-    libtesseract-dev \
-    libleptonica-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update
 
 # Set working directory
 WORKDIR /app
