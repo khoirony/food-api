@@ -11,7 +11,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDatabase() {
-	database, err := gorm.Open(mysql.Open("root:12345678@tcp(host.docker.internal:3306)/food_app"), &gorm.Config{})
+	database, err := gorm.Open(mysql.Open("root:12345678@tcp(localhost:3306)/food_app"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
