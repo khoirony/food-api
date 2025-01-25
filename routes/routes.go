@@ -28,17 +28,22 @@ func RegisterRoutes(router *gin.Engine) {
 	// Kelompok route untuk "category"
 	categoryRoutes := router.Group("/api/category")
 	{
-		categoryRoutes.GET("", controllers.FindCategory)             // GET /api/category
-		categoryRoutes.POST("", controllers.StoreCategory)           // POST /api/category
-		categoryRoutes.GET("/:id", controllers.FindCategoryById)     // GET /api/category/:id
-		categoryRoutes.PUT("/:id", controllers.UpdateCategoryById)   // PUT /api/category/:id
+		categoryRoutes.GET("", controllers.FindCategory)              // GET /api/category
+		categoryRoutes.POST("", controllers.StoreCategory)            // POST /api/category
+		categoryRoutes.GET("/:id", controllers.FindCategoryById)      // GET /api/category/:id
+		categoryRoutes.PUT("/:id", controllers.UpdateCategoryById)    // PUT /api/category/:id
 		categoryRoutes.DELETE("/:id", controllers.DeleteCategoryById) // DELETE /api/category/:id
 	}
 
 	// Kelompok route untuk "order"
 	orderRoutes := router.Group("/api/order")
 	{
-		orderRoutes.GET("", controllers.FindOrders)             // GET /api/category
-		orderRoutes.POST("", controllers.StoreOrder)           // POST /api/category
+		orderRoutes.GET("", controllers.FindOrders)  // GET /api/category
+		orderRoutes.POST("", controllers.StoreOrder) // POST /api/category
+	}
+
+	ocrRoutes := router.Group("/api/ocr2")
+	{
+		ocrRoutes.POST("", controllers.OcrToText)
 	}
 }
